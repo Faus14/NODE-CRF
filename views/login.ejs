@@ -1,0 +1,27 @@
+<%- include('include/_header') %>
+
+    <main class="container">
+      
+      <div class="row justify-content-center">
+          <div class="col-md-6 mt-5">
+              <h2 class="mb-4">Login</h2>
+              <form action="/api/login" method="post" id="login">
+                <div class="form-group">
+                    <label for="name" class="text-light">Nombre</label>
+                    <input class="form-control" type="hidden" name="id" value="">
+                    <input class="form-control" type="text" name="name" value="" placeholder="Su nombre">
+                </div>
+    <br>
+                <div class="form-group">
+                    <label for="Email" class="text-light">Email</label>
+                    <input class="form-control" type="text" name="email" value="" placeholder="ejemplo@gmail.com">
+                </div>
+<br>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Ingresar</button>
+                </div>
+              </form>
+          </div>
+      </div>
+    </main>
+<%- include('include/_footer') %>

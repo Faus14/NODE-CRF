@@ -1,0 +1,35 @@
+<%- include('include/_header') %>
+
+<main id="site-main" class="container pt-2 text-center d-flex justify-content-center align-items-center">
+    <div class="container">
+        <!-- Otros elementos de la interfaz de usuario -->
+
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <!-- Formulario para actualizar la clase -->
+                <form method="POST" id="update_clases">
+                    <div class="form-group">
+                        <label for="nombre">Nombre de la clase:</label>
+                        <input type="text" class="form-control" name="nombre" value="<%= clase.nombre %>" required>
+                    </div>
+                    <input type="hidden" name="id" value="<%= clase._id %>">
+
+                    <div class="form-group">
+                        <label for="descripcion">Descripción:</label>
+                        <textarea class="form-control" name="descripcion" rows="3"><%= clase.descripcion %></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha">Fecha:</label>
+                        <input type="date" class="form-control" name="fecha" value="<%= new Date(clase.fecha).toLocaleDateString('en-CA') %>" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<%- include('include/_footer') %>

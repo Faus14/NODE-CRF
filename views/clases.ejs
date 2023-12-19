@@ -1,0 +1,77 @@
+<%- include('include/_header') %>
+
+<main id="site-main" class="container pt-2 text-center d-flex justify-content-center align-items-center">
+    <div class="container">
+        <div class="box-nav d-flex justify-content-between p-3">
+            <a href="/add-clases" class="btn btn-primary">Nueva Clase</a>
+        </div>
+
+        <div class="card shadow p-3 mb-5 bg-dark rounded">
+            <% for(var i = 0; i < cl.length; i++) { %>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body" style="color: black;">
+                            <h5 class="card-title"><%= cl[i].nombre %></h5>
+                            <p class="card-text"><strong>Descripción:</strong> <%= cl[i].descripcion %></p>
+                            <p class="card-text"><strong>Fecha:</strong> <%= new Date(cl[i].fecha).toLocaleDateString() %></p>
+                            <p class="card-text">
+                                <strong>Link:</strong>
+                                <!-- Enlace a la nueva ruta de descarga -->
+                                <a href="/download/<%= cl[i]._id %>" style="color: black;" class="btn btn-outline-secondary">
+                                    Descargar
+                                </a>
+                            </p>
+                            <!-- Botones de editar y eliminar -->
+                            <div class="d-flex justify-content-between">
+                                <a href="/update-clases?id=<%= cl[i]._id%>" class="btn border-shadow update text-black">
+                                    <span class="text-white"><i class="fas fa-pencil-alt text-black"></i></span>
+                                </a>
+                                <a class="btn border-shadow delete text-black" onclick="eliminarClase('<%= cl[i]._id %>')">
+                                    <span class=" text-black"><i class="fas fa-times text-black"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</main>
+
+
+
+<script>
+    // Función para confirmar y enviar la solicitud de eliminación
+    async function eliminarClase(claseId) {
+    // Mostrar un modal de confirmación
+    const result = await Swal.fire({
+        title: '¿Estás seguro?',
+        text: 'No podrás revertir esto',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, eliminarlo'
+    });
+
+    if (result.isConfirmed) {
+        // Enviar la solicitud de eliminación al backend
+        try {
+            const response = await fetch(`/api/clases/${claseId}`, { method: 'DELETE' });
+
+            if (response.ok) {
+                // Recargar la página después de eliminar exitosamente
+                window.location.reload();
+            } else {
+                console.error('Error al eliminar la clase');
+            }
+        } catch (error) {
+            console.error('Error al eliminar la clase', error);
+        }
+    }
+}
+</script>
+
+<%- include('include/_footer') %>
+
+

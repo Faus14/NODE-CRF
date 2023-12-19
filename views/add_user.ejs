@@ -1,0 +1,62 @@
+<%- include('include/_header') %>
+  <main id="site-main" class="container pt-2 d-flex ">
+        <div class="container">
+            <div class="box-nav d-flex justify-content-between p-3">
+                <a href="/home" class="btn btn-primary">
+                    Volver a usuarios
+                </a>
+            </div>
+
+            <div class="container mt-5">
+                <form action="/api/users" method="POST" id="add_user">
+        
+                    <div class="form-group">
+                        <label for="name" class="text-light">Nombre</label>
+                        <input class="form-control" type="hidden" name="id" value="">
+                        <input class="form-control" type="text" name="name" value="" placeholder="Su nombre">
+                    </div>
+        <br>
+                    <div class="form-group">
+                        <label for="Email" class="text-light">Email</label>
+                        <input class="form-control" type="text" name="email" value="" placeholder="ejemplo@gmail.com">
+                    </div>
+        <br>
+                    <div class="form-group">
+                        <label class="text-light">Genero:</label>
+                        <div class="form-group">
+                            <input class="form-check-input" type="radio" id="male" name="gender" value="Male">
+                            <label class="form-check-label" for="male">Masculino</label>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-check-input" type="radio" id="female" name="gender" value="Female">
+                            <label class="form-check-label" for="female">Femenino</label>
+                        </div>
+                    </div>
+        <br>
+                    <div class="form-group">
+                        <label class="text-light">Estado:</label>
+                        <div class="form-group">
+                            <input class="form-check-input" type="radio" id="active" name="status" value="Active">
+                            <label class="form-check-label" for="active">Activo</label>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-check-input" type="radio" id="inactive" name="status" value="Inactive">
+                            <label class="form-check-label" for="inactive">Inactivo</label>
+                        </div>
+                    </div>
+        <br>
+        
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div>
+        
+                </form>
+            </div>
+
+       
+    </div>
+</main>
+<%- include('include/_footer') %>
+
+
+
