@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const mongoURI = 'mongodb://24590:27017/Aplicacion';
+// Cambia 'localhost' por el nombre del servicio de MongoDB definido en docker-compose.yml
+const mongoURI = 'mongodb://mongodb:27017/Aplicacion';
 
 const connectDB = async () => {
     try {

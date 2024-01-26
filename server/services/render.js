@@ -1,7 +1,6 @@
 const axios = require('axios');
-
-// URL base del servidor
-const serverBaseUrl = 'http://localhost:3000';
+// Cambia 'localhost' por el nombre del servicio de Node.js definido en docker-compose.yml
+const serverBaseUrl = 'http://nodejs-app:3000';
 
 // LOGIN
 exports.loginP = (req, res) => {
@@ -10,7 +9,7 @@ exports.loginP = (req, res) => {
 
 // CLASES
 exports.las_clases = (req, res) => {
-    // Realizar una solicitud GET a /api/clases
+    // Realizar una solicitud GET al servicio de Node.js
     axios.get(`${serverBaseUrl}/api/clases`)
         .then(response => {
             res.render('clases', { cl: response.data });
