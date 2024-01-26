@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-// Cambia 'localhost' por el nombre del servicio de MongoDB definido en docker-compose.yml
-const mongoURI = 'mongodb://mongodb:27017/Aplicacion';
+// Utiliza las variables de entorno proporcionadas por Railway
+const mongoURI = process.env.MONGO_URL || 'mongodb://mongo:e3-C2EH4Bca-fGEfHdde4a1-DGfBFbH2@mongodb:27017/Aplicacion';
 
 const connectDB = async () => {
     try {

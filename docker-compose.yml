@@ -10,9 +10,12 @@ services:
       - my-network
   mongodb:
     image: "mongo:latest"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "mongo"
+      MONGO_INITDB_ROOT_PASSWORD: "e3-C2EH4Bca-fGEfHdde4a1-DGfBFbH2"
     ports:
       - "27017:27017"
     networks:
       - my-network
 networks:
-  my-network: 
+  my-network:
