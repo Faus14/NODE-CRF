@@ -1,11 +1,21 @@
 const mongoose = require('mongoose');
+const mongoURI = 'mongodb://mongodb:27017/Aplicacion';
 
-const mongoURI = 'mongodb://172.27.0.2:27017/Aplicacion';
+const connectDB = async () => {
+    try {
+        const con = await mongoose.connect(mongoURI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
 
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log('MongoDB connected successfully');
-    })
-    .catch((error) => {
-        console.error('Error connecting to MongoDB:', error);
-    });
+        console.log(`MongoDB connected: ${con.connection.host}`);
+    } catch (err) {
+        console.error(`Error connecting to MongoDB: ${err.message}`);
+        process.exit(1);
+    }
+};
+
+module.exports = connectDB;
+
+// Llama a la función connectDB
+connectDB();
