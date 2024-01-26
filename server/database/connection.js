@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mongoURI = 'mongodb://monorail.proxy.rlwy.net:24590:27017/Aplicacion';
+const mongoURI = 'mongodb://24590:27017/Aplicacion';
 
 const connectDB = async () => {
     try {
