@@ -1,5 +1,8 @@
+
 const mongoose = require('mongoose');
-const mongoURI = 'mongodb://localhost:27017/Aplicacion';
+const mongoURI = 'mongodb://mongodb:27017/Aplicacion';  // Cambia "localhost" por "mongodb"
+
+// ...
 
 const connectDB = async () => {
     try {

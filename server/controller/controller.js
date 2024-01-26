@@ -7,8 +7,8 @@ exports.login = async (req, res) => {
     const { name, email } = req.body;
 
     if (!name || !email) {
-        res.status(400).send({ message: "Debe ingresar nombre y email" });
-        return;
+        res.redirect('/login');
+    
     }
 
     try {
@@ -19,14 +19,13 @@ exports.login = async (req, res) => {
 
             res.redirect('/home');
         } else if (personByName) {
-            res.redirect('/home');
-          //  res.redirect('/');
+
+      res.redirect('/login');
         } else if (personByEmail) {
-            res.redirect('/home');
-          //  res.redirect('/');
+            res.redirect('/login');
         } else {
-            res.redirect('/home');
-         //   res.redirect('/');
+        
+            res.redirect('/login');
         }
     } catch (error) {
         console.error("error durante el login", error);
